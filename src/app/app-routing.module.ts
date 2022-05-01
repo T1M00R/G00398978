@@ -11,6 +11,24 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    // page paths are automatically added, if modified they will need to be changed here
+    path: 'page1',
+    loadChildren: () => import('./pages/page1/page1.module').then( m => m.Page1PageModule)
+  },
+  {
+    path: 'page2',
+    loadChildren: () => import('./pages/page2/page2.module').then( m => m.Page2PageModule)
+  },
+  {
+    path: 'page3',
+    loadChildren: () => import('./pages/page3/page3.module').then( m => m.Page3PageModule)
+  },
+  {
+    path: 'page4',
+    loadChildren: () => import('./pages/page4/page4.module').then( m => m.Page4PageModule)
+  }
+  
 ];
 
 @NgModule({

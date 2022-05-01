@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePage } from './home.page';
+import { Page4Page } from '../pages/page4/page4.page';
 
 const routes: Routes = [
   {
     path: '',
     component: HomePage,
-  }
+  },
+  {
+    path: 'page4',
+    component: Page4Page,
+  },
+  
 ];
 
 @NgModule({
