@@ -14,11 +14,11 @@ const routes: Routes = [
   {
     // page paths are automatically added, if modified they will need to be changed here
     path: 'page1',
-    loadChildren: () => import('./pages/page1/page1.module').then( m => m.Page1PageModule)
+    loadChildren: () => import('./pages/todoPage/page1.module').then( m => m.Page1PageModule)
   },
   {
     path: 'page2',
-    loadChildren: () => import('./pages/page2/page2.module').then( m => m.Page2PageModule)
+    loadChildren: () => import('./pages/calendarPage/page2.module').then( m => m.Page2PageModule)
   },
   {
     path: 'page3',
