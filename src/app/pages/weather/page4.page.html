@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Weather</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  
+
+  
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Galway</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+
+      <!-- Don't need to change image since it's always raining here -->
+      <ion-img src='https://cdn1.iconfinder.com/data/icons/weather-473/128/WEATHER-512.png' ></ion-img>
+
+      <!-- Use string interpolation -->
+      <h2>
+        {{weather[0].main}}, {{weather[0].description}}
+      </h2>
+      
+
+      <!-- Retreive more data for temperature, humidity, real feel -->
+      <h3>
+        <!-- Couldn't figure out rounding temperatures -->
+        Temperature: {{temperature.temp}}
+        
+      </h3>
+      <h3>
+        Humidity: {{temperature.humidity}}
+      </h3>
+      <h3>
+        Real feel: {{temperature.feels_like}}
+      </h3>
+
+      <h2><br/>Wind<br/>
+      </h2>
+      <h3>
+        Speed:  {{wind.speed}} <sub>km/h</sub>
+      </h3>
+      <h3>
+        Direction:  {{wind.deg}} <sup>o</sup>
+      </h3>
+      <h3>
+        Gusts:  {{wind.gust}} <sub>km/h</sub>
+      </h3>
+
+      
+    </ion-card-content>
+  </ion-card>
+  
+
+
+</ion-content>

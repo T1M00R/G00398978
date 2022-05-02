@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,8 @@ export class HomePage {
   openPage4(){
     this.navCtrl.navigateForward('/page4');
   }
+
+
 
 
 }

@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     // page paths are automatically added, if modified they will need to be changed here
     path: 'page1',
-    loadChildren: () => import('./pages/todoPage/page1.module').then( m => m.Page1PageModule)
+    loadChildren: () => import('./pages/page1/page1.module').then( m => m.Page1PageModule)
   },
   {
     path: 'page2',
@@ -26,12 +26,9 @@ const routes: Routes = [
   },
   {
     path: 'page4',
-    loadChildren: () => import('./pages/page4/page4.module').then( m => m.Page4PageModule)
+    loadChildren: () => import('./pages/weather/page4.module').then( m => m.Page4PageModule)
   },
-  {
-    path: 'add-new-task',
-    loadChildren: () => import('./pages/add-new-task/add-new-task.module').then( m => m.AddNewTaskPageModule)
-  }
+  
   
 ];
 
