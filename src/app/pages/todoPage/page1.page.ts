@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { IonCard, IonCardContent, IonList, NavController } from '@ionic/angular';
-import { findItemLabel } from '@ionic/core/dist/types/utils/helpers';
+import { IonCard, IonCardContent, IonList, ModalController, NavController } from '@ionic/angular';
+import { Mode } from '@ionic/core';
+import { AddNewTaskPage } from 'src/app/pages/add-new-task/add-new-task.page';
 
 
 @Component({
@@ -31,10 +32,12 @@ export class Page1Page implements OnInit {
   }
   ]
 
+  
+
   today : number = Date.now();
 
   // requried to open page
-  constructor(private navCtrl:NavController) {}
+  constructor(private navCtrl:NavController,public modalCtrl:ModalController) {}
 
   ngOnInit() {
   }
@@ -47,11 +50,23 @@ export class Page1Page implements OnInit {
   }
 
   // On floating action button press, add a card to the todo list menu
-  addTask(){
+  async addTask(){
     
+    const modal = await this.modalCtrl.create({
+      component: AddNewTaskPage
+    })
     
+    // get data from new task object
+    modal.onDidDismiss().then(newTaskObj =>{
+      console.log(newTaskObj.data);
+    })  
+
+    return await modal.present();
     
   }
+
+  
+
 
   // When task is deleted run method below
   deleteTask(id){

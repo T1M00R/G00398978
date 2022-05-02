@@ -27,6 +27,10 @@ const routes: Routes = [
   {
     path: 'page4',
     loadChildren: () => import('./pages/page4/page4.module').then( m => m.Page4PageModule)
+  },
+  {
+    path: 'add-new-task',
+    loadChildren: () => import('./pages/add-new-task/add-new-task.module').then( m => m.AddNewTaskPageModule)
   }
   
 ];
