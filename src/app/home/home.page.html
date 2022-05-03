@@ -25,15 +25,39 @@
       </ion-card-header>
     
       <ion-card-content>
-        Welcome to Galway Tourism app. Here you will find lots of useful resources for your stay in Galway!
+        Welcome to Galway Tourism app. Here you will find lots of useful resources for your stay in Galway! 
       </ion-card-content>
     </ion-card>
     <!-- First card end -->
 
-    
-    
-    
   </div>
+
+  
+<!-- experimenting wtih ngmodel -->
+<input [(ngModel)]="CopyText">
+<strong>{{CopyText}}</strong>
+<input type="text " value="{{cardContent}}">
+
+<!-- First card start -->
+<ion-card color="dark" id="card" >
+  <ion-card-header>
+    <ion-card-subtitle></ion-card-subtitle>
+    <ion-card-title>Card to be changed</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content >
+    <h2> {{CopyText}}</h2>
+  </ion-card-content>
+</ion-card>
+<!-- First card end -->
+
+    
+
+    
+    
+    
+    
+  
 
 
   

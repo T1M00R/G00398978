@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     // page paths are automatically added, if modified they will need to be changed here
     path: 'page1',
-    loadChildren: () => import('./pages/page1/page1.module').then( m => m.Page1PageModule)
+    loadChildren: () => import('./pages/mapPage/page1.module').then( m => m.Page1PageModule)
   },
   {
     path: 'page2',
@@ -22,11 +22,11 @@ const routes: Routes = [
   },
   {
     path: 'page3',
-    loadChildren: () => import('./pages/page3/page3.module').then( m => m.Page3PageModule)
+    loadChildren: () => import('./pages/sightsPage/page3.module').then( m => m.Page3PageModule)
   },
   {
     path: 'page4',
-    loadChildren: () => import('./pages/weather/page4.module').then( m => m.Page4PageModule)
+    loadChildren: () => import('./pages/weatherPage/page4.module').then( m => m.Page4PageModule)
   },
   
   

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { Component, getNgModuleById } from '@angular/core';
+import { IonCard, NavController } from '@ionic/angular';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 @Component({
@@ -9,6 +9,10 @@ import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 })
 export class HomePage {
 
+  CopyText: string;
+  cardContent: string;
+
+
   constructor(private navCtrl:NavController) {}
 
   openPage4(){
@@ -16,6 +20,6 @@ export class HomePage {
   }
 
 
-
+  
 
 }
