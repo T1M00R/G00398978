@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>page3</ion-title>
+    <ion-title>Sight Seeing</ion-title>
 
     <ion-buttons slot="start">
       <ion-menu-button menu="main-menu"></ion-menu-button>
@@ -10,9 +10,70 @@
 
 <ion-content>
 
+  <!-- First card start -->
+  <ion-card color="dark">
+    <ion-card-header>
+      <ion-card-subtitle></ion-card-subtitle>
+      <ion-card-title>Places to eat</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <p>
+        List of places to go eat at in Galway.
+        <a href="https://www.tripadvisor.ie/Restaurants-g186609-Galway_County_Galway_Western_Ireland.html">Click me</a>
+      </p>
+    </ion-card-content>
+  </ion-card>
+  <!-- First card end -->
+
+  <!-- First card start -->
+  <ion-card color="dark">
+    <ion-card-header>
+      <ion-card-subtitle></ion-card-subtitle>
+      <ion-card-title>Sightseeing</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <p>
+        Sightseeing in Galway.
+        <a href="https://www.galwaytourism.ie/sightseeing-galway/">Click me</a>
+      </p>
+    </ion-card-content>
+  </ion-card>
+  <!-- First card end -->
+
+  
+
+
+  <ion-card>
+    <ion-card-header>
+      
+      
+      
+    </ion-card-header>
+    <ion-card-content>
+
+      
+      
+      <!-- Type here to add to list -->
+      <ion-textarea [(ngModel)]="textbox" placeholder="Add to bucket list"></ion-textarea>
+      
+      <!-- For each item on the list, add to bucket list -->
+      <ion-list id="list">
+        <li *ngFor="let item of bucketList"> 
+          {{ item }}
+      </ion-list>
+      
+      
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Buttons for list -->
   <ion-item>
-    <ion-button color="success">Open Browser</ion-button>
+    <ion-button fill="outline" size="small" (click)="addToBucketList(textbox)" slot="start">Add to list</ion-button>
+    <ion-button fill="outline" size="small" (click)="clearList()" slot="start">Clear list</ion-button>
   </ion-item>
+      
   
 
   

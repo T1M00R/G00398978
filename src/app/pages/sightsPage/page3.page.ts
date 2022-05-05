@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, getNgModuleById, OnInit } from '@angular/core';
+import { element } from 'protractor';
 
 
 @Component({
@@ -8,13 +9,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Page3Page implements OnInit {
 
+  textbox: any;
+
+  // List array for displaying
+  // add storage for this
+  bucketList = [
+    "item1", 
+    "item2"
+  ]
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  addToBucketList(item){
+
+    this.bucketList.push(item);
+
+  }
   
-  
+  clearList(){
+    
+    // for each item, remove it
+
+    let i : number;
+    length = this.bucketList.length;
+
+    for (i = 0; i < length; i++){
+      this.bucketList.pop();
+    }
+
+
+  }
 
 
 }
