@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, ElementRef, getNgModuleById, OnInit, ViewChild } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { GoogleMap } from '@capacitor/google-maps'
+import { GoogleMap, Marker } from '@capacitor/google-maps'
 import { environment } from 'src/environments/environment';
 // import { create } from 'domain';
 
@@ -25,6 +25,10 @@ export class Page1Page implements OnInit {
       lng: -9.0837658,
     }
 
+
+    markerId : string;
+
+
   // requried to open page
   constructor(private navCtrl:NavController) {}
 
@@ -37,7 +41,9 @@ export class Page1Page implements OnInit {
   }
 
   async createMap() {
-    this.newMap = await GoogleMap.create({
+
+    try{
+      this.newMap = await GoogleMap.create({
       id: 'capacitor-google-maps',
       element: this.mapRef.nativeElement,
       apiKey: environment.google_maps_api_key,
@@ -46,11 +52,64 @@ export class Page1Page implements OnInit {
         zoom: 13,
       },
     });
+
+
+    // call add marker method and add listeners
+    this.addMarker(this.center.lat, this.center.lng);
+    this.addListeners();  
+    }
+    catch(e){
+      console.log(e);
+    };
+    
   }
 
+
+
+
+  // Add marker to map
+  async addMarker(lat, lng){
+
+    if (this.markerId) this.removeMarker(); // if marker exists, remove last marker
+    this.markerId = await this.newMap.addMarker({
+      coordinate: {
+        lat : lat, 
+        lng: lng
+      },
+      draggable: true
+    });
+    
+  }
+
+  // remove marker method
+  async removeMarker(id?) {
+    await this.newMap.removeMarker(id ? id : this.markerId);
+  }
+
+  // allows for interaction with the markers, by clicking on a marker, the marker id is set if you want to delete it 
+  async addListeners(){
+    await this.newMap.setOnMarkerClickListener((event) =>{
+      console.log("setOnMarkerClickListener",event);
+      this.removeMarker(event.markerId);  // remove marker on click
+    })
+  
+  await this.newMap.setOnMapClickListener((event) => {
+    console.log("setOnMapClickListener",event);
+    this.addMarker(event.latitude, event.longitude);
+  })
+
+  await this.newMap.setOnMyLocationButtonClickListener((event) => {
+    console.log("setOnMyLocationButtonClickListener",event);
+    this.addMarker(event.latitude, event.longitude);
+  })
+
+  await this.newMap.setOnMyLocationClickListener((event) => {
+    console.log("setOnMyLocationClickListener",event);
+    this.addMarker(event.latitude, event.longitude);
+  })
   
 
-  
+} // end of addListeners method
 
 
   
