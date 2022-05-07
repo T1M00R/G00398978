@@ -1,5 +1,7 @@
 import { Component, getNgModuleById, OnInit } from '@angular/core';
+import { listenerCount } from 'process';
 import { element } from 'protractor';
+import { Storage } from '@ionic/storage-angular';
 
 
 @Component({
@@ -14,24 +16,29 @@ export class Page3Page implements OnInit {
   // List array for displaying
   // add storage for this
   bucketList = [
-    "item1", 
-    "item2"
+    
   ]
 
-  constructor() { }
+
+  
+  // using storage
+  constructor(private storage:Storage) { }
+
+
 
   ngOnInit() {
+    this.ionViewDidEnter();
   }
 
+
   addToBucketList(item){
-
-    this.bucketList.push(item);
-
+    this.bucketList.push(item);    
   }
   
   clearList(){
     
     // for each item, remove it
+
 
     let i : number;
     length = this.bucketList.length;
@@ -39,9 +46,32 @@ export class Page3Page implements OnInit {
     for (i = 0; i < length; i++){
       this.bucketList.pop();
     }
+  }
 
+  // Data persistence 
+  saveList(){
+    this.storage.create()   // checks if storage base is created , returns a promise
+    .then(()=>{
+      this.storage.set("list", this.bucketList)
+      .then(()=>{
+        console.log(this.bucketList)
+      })
+      .catch();    // save bucket list
+    }).
+    catch(); 
 
   }
 
+  ionViewDidEnter(){
+      this.storage.create()
+      .then(()=>{
+        this.storage.get("list")
+        .then((list)=>{
+          this.bucketList = list;
+        })
+        .catch()
+      })
+      .catch();
+  }
 
 }
